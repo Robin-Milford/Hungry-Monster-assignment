@@ -26,6 +26,10 @@
     height: 200px;
 }
 
+.meal img:hover {
+    cursor: pointer;
+}
+
 .show-item-food {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -36,10 +40,6 @@
 
 .meal-name {
     padding: 20px;
-}
-
-.show-item-food:hover {
-    cursor: pointer;
 }
 
 .random-details img {
@@ -56,4 +56,16 @@
 .ingredients-details {
     margin-left: 20px;
     margin-top: 10px;
+}
+
+.error-msg {
+    display: block;
+    color: orangered;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.search-result {
+    margin-left: 77px;
+    margin-bottom: 30px;
 }

@@ -1,15 +1,24 @@
 const inputMeal = document.getElementById('input-meal');
 const submitMeal = document.getElementById('submit-meal');
 const showResult = document.getElementById('show-item');
-const resultMsg = document.getElementById('result-msg')
+const errorMsg = document.getElementById('error-msg');
 
 
 submitMeal.addEventListener('click', function() {
     const getName = inputMeal.value;
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${getName}`)
-        .then(res => res.json())
-        .then(data => {
-            showResult.innerHTML = data.meals.map(meal => `
+    if (getName.length == 0) {
+        alert('Please enter a food name or first letter of your favorite desert😊😊');
+    } else {
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${getName}`)
+            .then(res => res.json())
+            .then(data => {
+                errorMsg.innerHTML = `<h3 class="search-result">Search for ${getName} is: </h3>`
+                if (data.meals === null) {
+                    errorMsg.innerHTML = `
+                    <h3 class="error-msg">No food found for: ${getName}</h3>`
+                } else {
+
+                    showResult.innerHTML = data.meals.map(meal => `
                  <div class="meal" onclick="displayMealInfo('${meal.idMeal}')">
                  <a href="#random-meal">
                  <img src="${meal.strMealThumb}">
@@ -17,7 +26,11 @@ submitMeal.addEventListener('click', function() {
                  <h5 class="meal-name">${meal.strMeal}</h5>
                  </div>
                 `)
-        })
+
+                }
+            })
+
+    }
 })
 
 function displayMealInfo(id) {
@@ -25,7 +38,6 @@ function displayMealInfo(id) {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             randomMeal.innerHTML = data.meals.map(meal => `
             <div class=random-details>
             <img src="${meal.strMealThumb}">
