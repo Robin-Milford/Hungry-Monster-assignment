@@ -1,8 +1,12 @@
+// getting all id from html as a global variable
+
 const inputMeal = document.getElementById('input-meal');
 const submitMeal = document.getElementById('submit-meal');
 const showResult = document.getElementById('show-item');
 const errorMsg = document.getElementById('error-msg');
 
+
+// function for search button
 
 submitMeal.addEventListener('click', function() {
     const getName = inputMeal.value;
@@ -17,7 +21,6 @@ submitMeal.addEventListener('click', function() {
                     errorMsg.innerHTML = `
                     <h3 class="error-msg">No food found for: ${getName}</h3>`
                 } else {
-
                     showResult.innerHTML = data.meals.map(meal => `
                  <div class="meal" onclick="displayMealInfo('${meal.idMeal}')">
                  <a href="#random-meal">
@@ -33,6 +36,8 @@ submitMeal.addEventListener('click', function() {
     }
 })
 
+
+// function for random meal when user clicked on an item
 function displayMealInfo(id) {
     const randomMeal = document.getElementById('random-meal');
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
