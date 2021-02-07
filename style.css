@@ -16,3 +16,24 @@
     margin-left: 350px;
     margin-right: 350px;
 }
+
+.meal {
+    border: 3px solid gray;
+}
+
+.meal img {
+    width: 200px;
+    height: 200px;
+}
+
+.show-item-food {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 20px;
+    margin-left: 82px;
+    text-align: center;
+}
+
+.meal-name {
+    padding: 20px;
+}

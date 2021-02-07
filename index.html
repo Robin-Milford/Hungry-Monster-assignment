@@ -41,11 +41,20 @@
                 </div>
             </nav>
         </section>
+
         <section class="input mt-5 input-field">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search for Meal..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary search-button" type="button" id="button-addon2">Search</button>
+                <input id="input-meal" type="text" class="form-control" placeholder="Search for Meal..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button id="submit-meal" class="btn btn-outline-secondary search-button" type="button" id="button-addon2">Search</button>
             </div>
+        </section>
+
+        <section class="mt-5">
+
+            <div class="result-msg"></div>
+            <div id="show-item" class="show-item-food"></div>
+
+            <div id="single-meal"></div>
 
         </section>
     </main>
