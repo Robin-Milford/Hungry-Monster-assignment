@@ -1,0 +1,18 @@
+.text {
+    font-weight: 800;
+}
+
+.search-button {
+    background-color: salmon;
+    color: seashell;
+}
+
+.search-button:hover {
+    background-color: salmon;
+    color: whitesmoke;
+}
+
+.input-field {
+    margin-left: 350px;
+    margin-right: 350px;
+}
