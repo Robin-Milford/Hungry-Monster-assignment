@@ -10,23 +10,24 @@ const randomMeal = document.getElementById('random-meal');
 // function for search button
 
 submitMeal.addEventListener('click', function() {
-    const getName = inputMeal.value;
-    //cheak the input field is blank or not
-    if (getName.length == 0) {
-        alert('Please enter a food name or first letter of your favorite desert😊😊');
-    } else {
-        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${getName}`)
-            .then(res => res.json())
-            .then(data => {
-                errorMsg.innerHTML = `<h3 class="search-result">Search for ${getName} is: </h3>`
-                    //cheak that,the api return something ,if return nothing then show a error message
-                if (data.meals === null) {
-                    errorMsg.innerHTML = `
+        const getName = inputMeal.value;
+        //cheak the input field is blank or not
+        if (getName.length == 0) {
+            alert('Please enter a food name or first letter of your favorite desert😊😊');
+        } else {
+            fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${getName}`)
+                .then(res => res.json())
+                .then(data => {
+                    errorMsg.innerHTML = `<h3 class="search-result">Search for ${getName} is: </h3>`
+                        //cheak that,the api return something ,if return nothing then show a error message
+                    if (data.meals === null) {
+                        errorMsg.innerHTML = `
                     <h3 class="error-msg">No food found for: ${getName}</h3>`
-                    showResult.innerHTML = "";
-                    randomMeal.innerHTML = " ";
-                } else {
-                    showResult.innerHTML = data.meals.map(meal => `
+                        showResult.innerHTML = "";
+                        randomMeal.innerHTML = " ";
+                    } else {
+                        randomMeal.innerHTML = "";
+                        showResult.innerHTML = data.meals.map(meal => `
                  <div class="meal" onclick="displayMealInfo('${meal.idMeal}')">
                  <a href="#random-meal">
                  <img src="${meal.strMealThumb}">
@@ -35,14 +36,12 @@ submitMeal.addEventListener('click', function() {
                  </div>
                 `)
 
-                }
-            })
+                    }
+                })
 
-    }
-})
-
-
-// function for random meal when user clicked on an item
+        }
+    })
+    // function for random meal when user clicked on an item
 function displayMealInfo(id) {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(res => res.json())
